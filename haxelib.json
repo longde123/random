@@ -1,0 +1,10 @@
+{
+    "name": "rand",
+    "url": "",
+    "license": "MIT",
+    "tags": ["random", "distribution", "standard"],
+    "description": "random variables according to distribution ",
+    "version": "1.0.0-alpha",
+    "releasenote": "",
+    "contributors": [""]
+}
