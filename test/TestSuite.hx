@@ -7,5 +7,7 @@ class TestSuite extends massive.munit.TestSuite
 	{
 		super();
 		add(NormalTest);
+        add(UniformTest);
+		add(DiscreteTest);
 	}
 }
