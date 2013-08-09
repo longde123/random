@@ -1,4 +1,4 @@
-package rand.distributions;
+package sakari.random.distributions;
 
 class Normal extends Distribution {
     var cache: Null<Float>;
@@ -47,14 +47,14 @@ class Normal extends Distribution {
         var m = p / 2;
         var hi = Z_TABLE.length - 1, lo = 0;
         while(hi > lo + 1) {
-            var test = Math.floor((hi - lo) / 2);
+            var test = Math.floor((hi + lo) / 2);
             if(Z_TABLE[test] < m) {
                 lo = test;
             } else {
                 hi = test;
             }
         }
-        if(Math.abs(Z_TABLE[hi) - m) < Math.abs(Z_TABLE[lo] - m))
+        if(Math.abs(Z_TABLE[hi] - m) < Math.abs(Z_TABLE[lo] - m))
             return zScore(hi);
         return zScore(lo);
     }
@@ -76,13 +76,15 @@ class Normal extends Distribution {
     }
 
     public function area(probability, low, high): Normal {
-        var mu = (high - low) / 2; 
+        var mu = (high + low) / 2; 
         mean(mu);
-        deviation((high - mu) / zFromP(probability));
+        var sigma = (high - mu) / zFromP(probability); 
+        deviation(sigma);
+        trace('mu $mu sigma $sigma p $probability low $low high $high');
         return this;
     }
 
-    public function generate() {
+    override public function generate(): Float {
         if(cache != null) {
             var r = cache;
             cache = null;

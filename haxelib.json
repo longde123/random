@@ -1,5 +1,5 @@
 {
-    "name": "rand",
+    "name": "random",
     "url": "",
     "license": "MIT",
     "tags": ["random", "distribution", "standard"],
